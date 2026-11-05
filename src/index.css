@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@700&family=Libre+Barcode+128&display=swap');
+@import 'tailwindcss';
+
+
+@theme {
+  --color-paper: #f6f2e9;
+  --color-ink: #1b1a18;
+  --color-ultramarine: #3d35f2;
+  --color-blush: #f4c2de;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-caveat: "Caveat", cursive;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-barcode: "Libre Barcode 128", monospace;
+}
+
+html, body, #root { height: 100%; overflow: hidden; background: #1b1a18; }
+body { font-family: var(--font-inter); color: var(--color-paper); -webkit-font-smoothing: antialiased; }
+
+.glass {
+  background: rgba(18, 18, 18, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(246, 242, 233, 0.12);
+}
+
+:focus-visible { outline: 2px solid var(--color-blush); outline-offset: 3px; }
+
+/* 3D flip */
+.flip-scene { perspective: 1800px; }
+.flip-inner { transform-style: preserve-3d; transition: transform 500ms cubic-bezier(.3,.7,.2,1); }
+.flip-inner.is-flipped { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-back { transform: rotateY(180deg); }
+
+@keyframes fly-away { to { transform: translateY(-900px) rotate(-14deg); opacity: 0; } }
+@keyframes slide-in { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes winner-glow { 50% { filter: drop-shadow(0 0 40px rgba(61,53,242,1)); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.anim-fly { animation: fly-away 600ms cubic-bezier(.5,0,.8,.4) forwards; }
+.anim-slide-in { animation: slide-in 450ms cubic-bezier(.2,.7,.2,1) both; }
+.anim-fade-in { animation: fade-in 400ms ease both; }
+.anim-winner { animation: winner-glow 600ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition-duration: 150ms; }
+  .anim-fly { animation-duration: 200ms; }
+  .anim-slide-in { animation-duration: 200ms; }
+  .carousel-slot { transition-duration: 150ms !important; }
+}

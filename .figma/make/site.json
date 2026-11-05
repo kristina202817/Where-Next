@@ -1,0 +1,17 @@
+{
+  "title": "Where Next",
+  "description": "This web app enables developers to test and visualize webcam hand tracking capabilities, providing real-time feedback on gesture recognition for gesture-controlled applications.",
+  "robots": {
+    "index": false
+  },
+  "icons": {
+    "icon": "/.figma/make/favicon.png"
+  },
+  "openGraph": {
+    "image": "/.figma/make/social-image.png"
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
